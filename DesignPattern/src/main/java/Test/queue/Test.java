@@ -1,10 +1,29 @@
 package Test.queue;
 
-public class Test
-{
-    public static void main(String[] args)
-    {
-        // 仓库对象
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) throws InterruptedException {
+
+        List<byte[]> list = new ArrayList<>();
+        int i = 0;
+        try {
+            while (true) {
+                list.add(new byte[5 * 1024 * 1024]);
+                System.out.println("分配次数：" + (++i));
+            }
+        } catch (Throwable e) {
+            int j = 1;
+            while (j < 50) {
+                Thread.sleep(5000);
+                j++;
+            }
+        }
+
+
+        /*// 仓库对象
         Factory storage = new Factory();
 
         // 生产者对象
@@ -45,6 +64,6 @@ public class Test
         p4.start();
         p5.start();
         p6.start();
-        p7.start();
+        p7.start();*/
     }
 }
